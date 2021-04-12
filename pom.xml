@@ -76,7 +76,7 @@
 	</build>
 
 	<scm>
-		<developerConnection>scm:git@github.com:TheGor1lla/cardstalker.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:TheGor1lla/cardstalker.git</developerConnection>
 	</scm>
 
 </project>
