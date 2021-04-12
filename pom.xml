@@ -9,7 +9,7 @@
     </parent>
     <groupId>de.gor1lla</groupId>
     <artifactId>cardstalker</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
     <name>Cardstalker</name>
     <description>App to watch card prices and get notifications</description>
     <dependencies>
@@ -79,7 +79,7 @@
 
     <scm>
         <developerConnection>scm:git:git@github.com:TheGor1lla/cardstalker.git</developerConnection>
-        <tag>cardstalker-0.0.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
 </project>
