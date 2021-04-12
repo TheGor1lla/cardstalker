@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardstalker - All Cards</title>
+</head>
+<body>
+
+<table border="2">
+    <tr>
+        <th>url</th>
+        <th>mailAddress</th>
+        <th>currentPrice</th>
+        <th>maxNotificationPrice</th>
+        <th>locale</th>
+        <th>foil</th>
+        <th>uuid</th>
+    </tr>
+    <tbody>
+    <tr th:each="card : ${allCards}">
+        <td th:text="${card.url}">url</td>
+        <td th:text="${card.mailAddress}">mail</td>
+        <td th:text="${card.currentPrice}">url</td>
+        <td th:text="${card.maxNotificationPrice}">url</td>
+        <td th:text="${card.locale}">url</td>
+        <td th:text="${card.foil}">url</td>
+        <td><a th:href="@{/details/} + ${card.uuid}" th:text="${card.uuid}"/></td>
+
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
