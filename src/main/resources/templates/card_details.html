@@ -14,9 +14,9 @@ Some infos about your card:
 <p th:text="${card.maxNotificationPrice}">max Notification Price</p>
 <p th:text="${card.locale}">Locale</p>
 <p th:text="${card.foil}">Foil</p>
-<p th:text="${card.uuid}">UUID</p>
+<p th:text="${card.cardId}">Card Id</p>
 
-<a th:href="@{/delete/} + ${card.uuid}">delete</a>
+<a th:href="@{/delete/} + ${card.cardId}">delete</a>
 
 </body>
 </html>

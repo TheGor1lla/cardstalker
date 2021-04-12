@@ -14,17 +14,17 @@
         <th>maxNotificationPrice</th>
         <th>locale</th>
         <th>foil</th>
-        <th>uuid</th>
+        <th>cardId</th>
     </tr>
     <tbody>
-    <tr th:each="card : ${allCards}">
+    <tr th:each="card : ${allCards}" th:if="${not #lists.isEmpty(allCards)}">
         <td th:text="${card.url}">url</td>
         <td th:text="${card.mailAddress}">mail</td>
         <td th:text="${card.currentPrice}">url</td>
         <td th:text="${card.maxNotificationPrice}">url</td>
         <td th:text="${card.locale}">url</td>
         <td th:text="${card.foil}">url</td>
-        <td><a th:href="@{/details/} + ${card.uuid}" th:text="${card.uuid}"/></td>
+        <td><a th:href="@{/details/} + ${card.cardId}" th:text="${card.cardId}"/></td>
 
     </tr>
     </tbody>

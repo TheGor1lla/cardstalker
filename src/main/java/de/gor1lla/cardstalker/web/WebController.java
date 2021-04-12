@@ -13,19 +13,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("/")
 public class WebController {
 
     private final CardRepository cardRepository;
-    private final CardService cardService;
+    private final CardManagementService cardManagementService;
     private static final Logger LOGGER = LoggerFactory.getLogger(WebController.class);
 
-    public WebController(CardRepository cardRepository, CardService cardService) {
+    public WebController(CardRepository cardRepository, CardManagementService cardManagementServiceImpl2) {
         this.cardRepository = cardRepository;
-        this.cardService = cardService;
+        this.cardManagementService = cardManagementServiceImpl2;
     }
 
     @GetMapping
@@ -38,9 +37,7 @@ public class WebController {
     @PostMapping
     public String addCard(@ModelAttribute Card card) {
 
-        card.setUuid(UUID.randomUUID().toString());
-        cardRepository.save(card);
-        LOGGER.info("Received new card {}", card);
+        cardManagementService.saveCard(card);
         return "form";
     }
 
@@ -48,7 +45,7 @@ public class WebController {
     public String listAllCards(Model model) {
 
         List<Card> cards;
-        cards = cardRepository.findAll();
+        cards = cardManagementService.getAllCards();
 
         model.addAttribute("allCards", cards);
 
@@ -59,7 +56,7 @@ public class WebController {
     @GetMapping(value = "/details/{cardId}")
     public String showCardDetails(Model model, @PathVariable String cardId) {
 
-        Card card = cardRepository.findByUUID(cardId);
+        Card card = cardManagementService.getCardByCardId(cardId);
         model.addAttribute("card", card);
 
         return "card_details";
@@ -68,8 +65,7 @@ public class WebController {
     @GetMapping(value = "/delete/{cardId}")
     public String deleteCard(@PathVariable String cardId) {
 
-        cardRepository.deleteByUUID(cardId);
-        LOGGER.info("Deleted card: {}", cardId);
+        cardManagementService.deleteByCardId(cardId);
 
         return "redirect:/cards";
 
