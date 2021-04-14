@@ -38,7 +38,7 @@ public class WebController {
     public String addCard(@ModelAttribute Card card) {
 
         cardManagementService.saveCard(card);
-        return "form";
+        return "redirect:/";
     }
 
     @GetMapping(value = "/cards")
