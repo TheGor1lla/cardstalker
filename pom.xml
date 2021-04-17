@@ -82,4 +82,10 @@
         <tag>HEAD</tag>
     </scm>
 
+    <properties>
+        <sonar.projectKey>TheGor1lla_cardstalker</sonar.projectKey>
+        <sonar.organization>thegor1lla</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+    </properties>
+
 </project>
