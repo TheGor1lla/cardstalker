@@ -27,8 +27,8 @@
             </div>
             <div class="col-75">
                 <select name="locale" th:field="*{locale}" id="locale">
-                    <option value="1">English</option>
-                    <option value="3">German</option>
+                    <option value="1">🇺🇸 English</option>
+                    <option value="3">🇩🇪 German</option>
                 </select>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 <label for="mail">Mail</label>
             </div>
             <div class="col-75">
-                <input th:field="*{mailAddress}"  type="email" id="mail" name="mail" required>
+                <input th:field="*{mailAddress}"  type="email" id="mail" name="mail" required placeholder="you@example.org">
             </div>
         </div>
 

@@ -21,11 +21,13 @@ public class BootstrapRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        List<Card> cardList = new ArrayList<>();
-        cardList.add(new Card("url1", "mail@",1.2f,1.2f,1,'Y', UUID.randomUUID().toString()));
-        cardList.add(new Card("url2", "mail@",1.2f,1.2f,1,'Y', UUID.randomUUID().toString()));
-        cardList.add(new Card("url3", "mail@",1.2f,1.2f,1,'Y', UUID.randomUUID().toString()));
-        cardList.add(new Card("url4", "mail@",1.2f,1.2f,1,'Y', UUID.randomUUID().toString()));
-        cardRepository.saveAll(cardList);
+        if(cardRepository.findAll().size() == 0) {
+            List<Card> cardList = new ArrayList<>();
+            cardList.add(new Card("url1", "mail@example.org", 1.2f, 12.2f, 1, 'Y', UUID.randomUUID().toString()));
+            cardList.add(new Card("url2", "mail@example.net", 1.2f, 1.2f, 1, 'Y', UUID.randomUUID().toString()));
+            cardList.add(new Card("url3", "mail@example.com", 1.2f, 1, 1, 'N', UUID.randomUUID().toString()));
+            cardList.add(new Card("url4", "mail@example.de", 1.2f, 1.2f, 1, 'N', UUID.randomUUID().toString()));
+            cardRepository.saveAll(cardList);
+        }
     }
 }

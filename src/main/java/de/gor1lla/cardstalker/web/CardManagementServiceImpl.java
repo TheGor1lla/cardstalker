@@ -40,7 +40,7 @@ public class CardManagementServiceImpl implements CardManagementService {
     public void saveCard(Card card) {
 
         card.setCardId(UUID.randomUUID().toString());
-        cardRepository.save(card);
-        LOGGER.info("Saved new card {}", card);
+        Card savedCard = cardRepository.save(card);
+        LOGGER.info("Saved new card {}", savedCard);
     }
 }
