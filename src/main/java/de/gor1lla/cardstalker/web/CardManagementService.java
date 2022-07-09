@@ -8,9 +8,9 @@ public interface CardManagementService {
 
     List<Card> getAllCards();
 
-    Card getCardByCardId(String cardId);
+    Card getCardByStalkCode(String stalkCode);
 
-    void deleteByCardId(String cardId);
+    void deleteByStalkCode(String stalkCode);
 
     void saveCard(Card card);
 }

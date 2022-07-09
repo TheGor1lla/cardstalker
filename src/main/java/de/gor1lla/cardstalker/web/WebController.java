@@ -55,20 +55,19 @@ public class WebController {
         return "card_list";
     }
 
-    //TODO: form clear
-    @GetMapping(value = "/details/{cardId}")
-    public String showCardDetails(Model model, @PathVariable String cardId) {
+    @GetMapping(value = "/details/{stalkCode}")
+    public String showCardDetails(Model model, @PathVariable String stalkCode) {
 
-        Card card = cardManagementService.getCardByCardId(cardId);
+        Card card = cardManagementService.getCardByStalkCode(stalkCode);
         model.addAttribute("card", card);
 
         return "card_details";
     }
 
-    @GetMapping(value = "/delete/{cardId}")
-    public String deleteCard(@PathVariable String cardId) {
+    @GetMapping(value = "/delete/{stalkCode}")
+    public String deleteCard(@PathVariable String stalkCode) {
 
-        cardManagementService.deleteByCardId(cardId);
+        cardManagementService.deleteByStalkCode(stalkCode);
 
         return "redirect:/cards";
 

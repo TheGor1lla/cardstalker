@@ -1,44 +1,28 @@
 package de.gor1lla.cardstalker.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
 
-@Entity
 public class Card implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     private String url;
     private String mailAddress;
     private float currentPrice;
-    private float maxNotificationPrice;
+    private Float maxNotificationPrice;
     private int locale;
     private Character foil;
-    private String cardId;
+    private String stalkCode;
 
     public Card() {
     }
 
-    public Card(String url, String mailAddress, float currentPrice, float maxNotificationPrice, int locale, Character foil, String cardId) {
+    public Card(String url, String mailAddress, float currentPrice, float maxNotificationPrice, int locale, Character foil, String stalkCode) {
         this.url = url;
         this.mailAddress = mailAddress;
         this.currentPrice = currentPrice;
         this.maxNotificationPrice = maxNotificationPrice;
         this.locale = locale;
         this.foil = foil;
-        this.cardId = cardId;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.stalkCode = stalkCode;
     }
 
     public String getUrl() {
@@ -65,11 +49,11 @@ public class Card implements Serializable {
         this.currentPrice = currentPrice;
     }
 
-    public float getMaxNotificationPrice() {
+    public Float getMaxNotificationPrice() {
         return maxNotificationPrice;
     }
 
-    public void setMaxNotificationPrice(float maxNotificationPrice) {
+    public void setMaxNotificationPrice(Float maxNotificationPrice) {
         this.maxNotificationPrice = maxNotificationPrice;
     }
 
@@ -89,25 +73,24 @@ public class Card implements Serializable {
         this.foil = foil;
     }
 
-    public String getCardId() {
-        return cardId;
+    public String getStalkCode() {
+        return stalkCode;
     }
 
-    public void setCardId(String cardId) {
-        this.cardId = cardId;
+    public void setStalkCode(String stalkCode) {
+        this.stalkCode = stalkCode;
     }
 
     @Override
     public String toString() {
         return "Card{" +
-                "id=" + id +
-                ", url='" + url + '\'' +
+                "url='" + url + '\'' +
                 ", mailAddress='" + mailAddress + '\'' +
                 ", currentPrice=" + currentPrice +
                 ", maxNotificationPrice=" + maxNotificationPrice +
                 ", locale=" + locale +
                 ", foil=" + foil +
-                ", cardId='" + cardId + '\'' +
+                ", stalkCode='" + stalkCode + '\'' +
                 '}';
     }
 }
