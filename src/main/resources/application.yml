@@ -1,0 +1,6 @@
+spring:
+  jpa.hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:mariadb://localhost:3306/stash
+    username: cardstalker
+    password: cardstalker

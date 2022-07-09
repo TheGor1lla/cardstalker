@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: mariadb:10.8.3
+    restart: always
+    container_name: "cardstalker-db"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: cardstalker
+      MYSQL_PASSWORD: cardstalker
+      MYSQL_DATABASE: stash

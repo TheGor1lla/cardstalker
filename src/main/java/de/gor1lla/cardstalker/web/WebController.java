@@ -18,13 +18,11 @@ import java.util.List;
 @RequestMapping("/")
 public class WebController {
 
-    private final CardRepository cardRepository;
     private final CardManagementService cardManagementService;
     private static final Logger LOGGER = LoggerFactory.getLogger(WebController.class);
 
-    public WebController(CardRepository cardRepository, CardManagementService cardManagementServiceImpl2) {
-        this.cardRepository = cardRepository;
-        this.cardManagementService = cardManagementServiceImpl2;
+    public WebController(CardManagementService cardManagementServiceImpl) {
+        this.cardManagementService = cardManagementServiceImpl;
     }
 
     @GetMapping
@@ -41,6 +39,7 @@ public class WebController {
         return "redirect:/";
     }
 
+    // ToDo: authorization
     @GetMapping(value = "/cards")
     public String listAllCards(Model model) {
 
