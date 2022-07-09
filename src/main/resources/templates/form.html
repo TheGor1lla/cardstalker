@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cardstalker</title>
+    <title>👀 Cardstalker</title>
 </head>
 <body>
 
@@ -17,18 +17,17 @@
                 <label for="cardLink">Cardmarket Link</label>
             </div>
             <div class="col-75">
-                <input th:field="*{url}" type="text" id="cardLink" name="cardLink" required>
+                <input type="url" th:field="*{url}" id="cardLink" name="cardLink" required>
             </div>
         </div>
-
         <div class="row">
             <div class="col-25">
                 <label>Language</label>
             </div>
             <div class="col-75">
-                <select name="locale" th:field="*{locale}" id="locale">
-                    <option value="1">🇺🇸 English</option>
-                    <option value="3">🇩🇪 German</option>
+                <select name="locale" th:name="locale" id="locale">
+                    <option value="1" th:selected="(${keepLocale} == 1)">🇺🇸 English</option>
+                    <option value="3" th:selected="(${keepLocale} == 3)">🇩🇪 German</option>
                 </select>
             </div>
         </div>
@@ -39,8 +38,8 @@
             </div>
             <div class="col-75">
                 <select name="foil" th:field="*{foil}" >
+                    <option selected value="">Any</option>
                     <option value="Y">Yes</option>
-                    <option value="">Any</option>
                     <option value="N">No</option>
                 </select>
 
@@ -52,7 +51,7 @@
                 <label for="mail">Mail</label>
             </div>
             <div class="col-75">
-                <input th:field="*{mailAddress}"  type="email" id="mail" name="mail" required placeholder="you@example.org">
+                <input th:name="mailAddress" th:value="${keepMail}" type="email" id="mail" name="mail" required placeholder="you@example.org">
             </div>
         </div>
 
@@ -67,7 +66,7 @@
         <br>
 
         <div class="row">
-            <input type="submit" value="Submit">
+            <input type="submit" value="Stalk!">
         </div>
     </form>
     <div class="row">
