@@ -1,8 +1,5 @@
 package de.gor1lla.cardstalker.domain;
 
-import javax.persistence.Entity;
-
-@Entity
 public class MagicCard extends Card {
 
     private Character foil;
