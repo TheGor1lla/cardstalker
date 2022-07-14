@@ -17,7 +17,8 @@
                 <label for="cardLink">Cardmarket Link</label>
             </div>
             <div class="col-75">
-                <input type="url" th:field="*{url}" id="cardLink" name="cardLink" required>
+                <input type="url" th:field="*{url}" id="cardLink" name="cardLink" required autofocus>
+                <small th:class="error" th:if="${#fields.hasErrors('url')}" th:errors="*{url}"/>
             </div>
         </div>
         <div class="row">
@@ -37,7 +38,7 @@
                 <label>Foil</label>
             </div>
             <div class="col-75">
-                <select name="foil" th:field="*{foil}" >
+                <select name="foil" th:field="*{foil}">
                     <option selected value="">Any</option>
                     <option value="Y">Yes</option>
                     <option value="N">No</option>
@@ -51,7 +52,8 @@
                 <label for="mail">Mail</label>
             </div>
             <div class="col-75">
-                <input th:name="mailAddress" th:value="${keepMail}" type="email" id="mail" name="mail" required placeholder="you@example.org">
+                <input th:name="mailAddress" th:value="${keepMail}" type="email" id="mail" name="mail" required
+                       placeholder="you@example.org">
             </div>
         </div>
 
