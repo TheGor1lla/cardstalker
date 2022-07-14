@@ -62,7 +62,7 @@
                 <label for="price">React at price (in euro)</label>
             </div>
             <div class="col-75">
-                <input th:field="*{maxNotificationPrice}" type="number" id="price" name="price" step="0.01">
+                <input th:field="*{maxNotificationPrice}" type="number" id="price" name="price" step="0.01" min="0.01">
             </div>
         </div>
         <br>
@@ -72,11 +72,16 @@
         </div>
     </form>
     <div class="row">
-        <div class="message">
+        <div class="message" th:if="${stalkCode}">
+            👍 Successfully added your <a th:href="@{'/details/' + ${stalkCode}}">card</a>
         </div>
     </div>
     <br>
-
 </div>
 </body>
+<footer>
+    <small class="IHOS">
+        I 💚 <a href="https://github.com/TheGor1lla/cardstalker">Open Source </a>
+    </small>
+</footer>
 </html>
