@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class WebController {
+class WebController {
 
     private final CardManagementService cardManagementService;
     private static final Logger LOGGER = LoggerFactory.getLogger(WebController.class);
@@ -37,7 +38,7 @@ public class WebController {
     }
 
     @PostMapping
-    public String addCard(@ModelAttribute Card card, HttpSession session, BindingResult result) {
+    public String addCard(@ModelAttribute Card card, HttpSession session, BindingResult result, RedirectAttributes redirectAttributes) {
 
         session.setAttribute("keepLocale", card.getLocale());
         session.setAttribute("keepMail", card.getMailAddress());
@@ -47,7 +48,9 @@ public class WebController {
             result.addError(error);
             return "form";
         }
-        cardManagementService.saveCard(card);
+        String stalkCode = cardManagementService.saveCard(card);
+
+        redirectAttributes.addFlashAttribute("stalkCode", stalkCode);
         return "redirect:/";
     }
 

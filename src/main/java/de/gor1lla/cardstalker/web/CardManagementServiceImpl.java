@@ -15,14 +15,14 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class CardManagementServiceImpl implements CardManagementService {
+class CardManagementServiceImpl implements CardManagementService {
 
     private final ModelMapper modelMapper;
     private final CardRepository cardRepository;
     private static final Logger LOGGER = LoggerFactory.getLogger(CardManagementServiceImpl.class);
 
 
-    public CardManagementServiceImpl(CardRepository cardRepository, ModelMapper modelMapper) {
+    CardManagementServiceImpl(CardRepository cardRepository, ModelMapper modelMapper) {
         this.cardRepository = cardRepository;
         this.modelMapper = modelMapper;
     }
@@ -34,8 +34,9 @@ public class CardManagementServiceImpl implements CardManagementService {
 
     @Override
     public Card getCardByStalkCode(String stalkCode) {
-
-        return modelMapper.map(cardRepository.findByStalkCode(stalkCode), Card.class);
+        // ToDO Does Mapping work with ObjectMapper
+        return modelMapper.map(cardRepository.findByStalkCode(stalkCode)
+                .orElseThrow(() -> new CardNotFoundException(stalkCode)), Card.class);
     }
 
     @Override
@@ -46,7 +47,7 @@ public class CardManagementServiceImpl implements CardManagementService {
     }
 
     @Override
-    public void saveCard(Card card) {
+    public String saveCard(Card card) {
 
         buildUrlForCard(card);
 
@@ -54,6 +55,8 @@ public class CardManagementServiceImpl implements CardManagementService {
         CardEntity savedCard = cardRepository.save(modelMapper.map(card, CardEntity.class));
 
         LOGGER.info("Saved new card {}", savedCard);
+
+        return savedCard.getStalkCode();
     }
 
     private void buildUrlForCard(Card card) {

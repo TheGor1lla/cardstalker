@@ -6,14 +6,15 @@ import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-public interface CardRepository extends CrudRepository<CardEntity, Long> {
+public interface  CardRepository extends CrudRepository<CardEntity, Long> {
 
     @Override
     List<CardEntity> findAll();
 
     @Query(value = "SELECT * FROM cards where stalk_code = :stalkCode", nativeQuery = true)
-    CardEntity findByStalkCode(String stalkCode);
+    Optional<CardEntity> findByStalkCode(String stalkCode);
 
     @Modifying
     @Transactional

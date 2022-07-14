@@ -4,7 +4,7 @@ import de.gor1lla.cardstalker.domain.Card;
 
 import java.util.List;
 
-public interface CardManagementService {
+interface CardManagementService {
 
     List<Card> getAllCards();
 
@@ -12,5 +12,5 @@ public interface CardManagementService {
 
     void deleteByStalkCode(String stalkCode);
 
-    void saveCard(Card card);
+    String saveCard(Card card);
 }
