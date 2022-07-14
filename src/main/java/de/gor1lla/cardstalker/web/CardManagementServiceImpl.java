@@ -7,9 +7,11 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -46,9 +48,22 @@ public class CardManagementServiceImpl implements CardManagementService {
     @Override
     public void saveCard(Card card) {
 
+        buildUrlForCard(card);
+
         card.setStalkCode(UUID.randomUUID().toString());
         CardEntity savedCard = cardRepository.save(modelMapper.map(card, CardEntity.class));
 
         LOGGER.info("Saved new card {}", savedCard);
+    }
+
+    private void buildUrlForCard(Card card) {
+
+        String completeUrl = UriComponentsBuilder
+                .fromUriString(card.getUrl().split(("\\?|\\#"))[0]) // remove all params
+                .queryParam("language", card.getLocale())
+                .queryParamIfPresent("isFoil", Optional.ofNullable(card.getFoil()))
+                .build()
+                .toUriString();
+        card.setUrl(completeUrl);
     }
 }
