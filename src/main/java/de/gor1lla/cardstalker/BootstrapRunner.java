@@ -1,6 +1,6 @@
 package de.gor1lla.cardstalker;
 
-import de.gor1lla.cardstalker.domain.Card;
+import de.gor1lla.cardstalker.repositories.CardEntity;
 import de.gor1lla.cardstalker.repositories.CardRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

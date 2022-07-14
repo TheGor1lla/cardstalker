@@ -1,6 +1,5 @@
 package de.gor1lla.cardstalker.repositories;
 
-import de.gor1lla.cardstalker.CardEntity;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

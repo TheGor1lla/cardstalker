@@ -1,7 +1,7 @@
 package de.gor1lla.cardstalker.web;
 
-import de.gor1lla.cardstalker.CardEntity;
 import de.gor1lla.cardstalker.domain.Card;
+import de.gor1lla.cardstalker.repositories.CardEntity;
 import de.gor1lla.cardstalker.repositories.CardRepository;
 import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;

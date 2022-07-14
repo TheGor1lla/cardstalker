@@ -1,4 +1,4 @@
-package de.gor1lla.cardstalker;
+package de.gor1lla.cardstalker.repositories;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
