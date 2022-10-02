@@ -44,3 +44,5 @@ than needing to install Maven locally.
 The project can be built from the root directory using the standard Maven command:
 
 	$ ./mvnw clean verify
+
+The app should always be runnable with the local setup without any special configuration. Any other environment like stage or prod should include needed configuration as docs.
