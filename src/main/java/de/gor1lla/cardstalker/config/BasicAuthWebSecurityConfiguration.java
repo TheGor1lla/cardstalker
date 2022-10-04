@@ -25,8 +25,8 @@ public class BasicAuthWebSecurityConfiguration extends WebSecurityConfigurerAdap
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/form").permitAll()
                 .antMatchers("/cards").authenticated()
+                .anyRequest().permitAll()
                 .and()
                 .httpBasic();
     }
