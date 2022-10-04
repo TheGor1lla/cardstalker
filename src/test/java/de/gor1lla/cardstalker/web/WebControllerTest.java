@@ -24,7 +24,6 @@ class WebControllerTest {
     private CardManagementService cardManagementService;
 
     @Test
-    @WithMockUser
     void ensureRootCallReturnsCardForm() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
@@ -32,7 +31,6 @@ class WebControllerTest {
     }
 
     @Test
-    @WithMockUser
     void ensureOnlyValidCardmarketLinksWork() throws Exception {
 
         mockMvc.perform(post("/")
@@ -46,5 +44,19 @@ class WebControllerTest {
                         .with(SecurityMockMvcRequestPostProcessors.csrf()))
                 .andExpect(status().isOk())
                 .andExpect(model().hasErrors());
+    }
+
+    @Test
+    void ensureErrorOnUnauthenticatedRequestsForCardList() throws Exception {
+        mockMvc.perform(get("/cards"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    @WithMockUser
+    void ensureOnlyAuthenticatedRequestsForCardList() throws Exception {
+        mockMvc.perform(get("/cards"))
+                .andExpect(status().isOk())
+                .andExpect(model().hasNoErrors());
     }
 }
