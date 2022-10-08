@@ -4,3 +4,8 @@ spring:
     url: jdbc:mariadb://localhost:3306/stash
     username: cardstalker
     password: cardstalker
+
+app:
+  username: gor1lla
+  password: gor1lla
+  role: USER
