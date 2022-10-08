@@ -34,7 +34,7 @@ class WebController {
         model.addAttribute("card", new Card());
         model.addAttribute("keepLocale", session.getAttribute("keepLocale"));
         model.addAttribute("keepMail", session.getAttribute("keepMail"));
-        return "form";
+        return "fragments/form";
     }
 
     @PostMapping
@@ -46,7 +46,7 @@ class WebController {
         if (!card.getUrl().matches("^http(s)?\\:\\/\\/(www)?\\.cardmarket\\.(net|com)\\/.*")) {
             FieldError error = new FieldError("card", "url", "Not a cardmarket link");
             result.addError(error);
-            return "form";
+            return "fragments/form";
         }
         String stalkCode = cardManagementService.saveCard(card);
 
@@ -63,7 +63,7 @@ class WebController {
 
         model.addAttribute("allCards", cards);
 
-        return "card_list";
+        return "fragments/card_list";
     }
 
     @GetMapping(value = "/details/{stalkCode}")
@@ -72,7 +72,7 @@ class WebController {
         Card card = cardManagementService.getCardByStalkCode(stalkCode);
         model.addAttribute("card", card);
 
-        return "card_details";
+        return "fragments/card_details";
     }
 
     @GetMapping(value = "/delete/{stalkCode}")

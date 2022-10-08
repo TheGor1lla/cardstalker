@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardstalker - Card Infos</title>
+    <link href="/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<main layout:fragment="content" class="container">
+
+    <div class="parent">
+        <div class="div1 card_detail"><img src="/card_back.png"></div>
+
+        <div class="div2">
+            <div class="key">Cardmarket Link:</div>
+            <div class="value"><a th:href="${card.url}">Click Me</a></div>
+        </div>
+
+        <div class="div3">
+            <div class="key">Mail address:</div>
+            <div class="value" th:text="${card.mailAddress}"/>
+        </div>
+
+        <div class="div4">
+            <div class="key">Current Price:</div>
+            <div class="value" th:text="${card.currentPrice}+'€'"/>
+        </div>
+
+        <div class="div5">
+            <div class="key">Notify below:</div>
+            <div class="value" th:if="${card.maxNotificationPrice == null}"> -</div>
+            <div class="value" th:unless="${card.maxNotificationPrice == null}"
+                 th:text="${card.maxNotificationPrice}+'€'"></div>
+        </div>
+
+        <div class="div6">
+            <div class="key">Language:</div>
+            <div th:switch="${card.locale}">
+                <p class="value" th:case="'1'">🇺🇸 English</p>
+                <p class="value" th:case="'3'">🇩🇪 German</p>
+            </div>
+        </div>
+
+        <div class="div7">
+            <div class="key">Foil:</div>
+            <div th:switch="${card.foil}">
+                <p class="value" th:case="'Y'">Yes</p>
+                <p class="value" th:case="'N'">No</p>
+                <p class="value" th:case="*">Any</p>
+            </div>
+        </div>
+
+        <div class="div8 danger-zone">
+            <div class="key">Danger Zone:</div>
+            <div class="value"><a th:href="@{/delete/{stalkCode}(stalkCode=${card.stalkCode})}">Delete this stalk</a>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

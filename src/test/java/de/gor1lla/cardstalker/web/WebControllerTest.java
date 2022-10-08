@@ -27,7 +27,7 @@ class WebControllerTest {
     void ensureRootCallReturnsCardForm() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("form"));
+                .andExpect(view().name("fragments/form"));
     }
 
     @Test

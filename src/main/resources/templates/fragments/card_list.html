@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="https://www.thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Cardstalker - All Cards</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <!--ToDo Sortable-->
+    <!--ToDo test everything light mode-->
+    <table role="grid">
+        <thead>
+        <tr>
+            <th>URL</th>
+            <th>Mail</th>
+            <th>Last Price</th>
+            <th>Notify below</th>
+            <th>Locale</th>
+            <th>Foil</th>
+            <th>stalkCode</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="card : ${allCards}" th:if="${not #lists.isEmpty(allCards)}">
+            <td><a th:href="${card.url}" th:text="${card.url}">url</td>
+            <td th:text="${card.mailAddress}">mail</td>
+            <td th:text="${card.currentPrice}">url</td>
+            <td th:text="${card.maxNotificationPrice}">url</td>
+            <td th:text="${card.locale}">url</td>
+            <td th:text="${card.foil}">url</td>
+            <td><a th:href="@{/details/} + ${card.stalkCode}" th:text="${card.stalkCode}"/></td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
